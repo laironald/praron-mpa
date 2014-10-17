@@ -1,13 +1,3 @@
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-  document.addEventListener("online", onOnline, false);
-}
-
-function onOnline() {
-  alert('online')
-}
-
-
 var app = angular.module('cooking', ['RecipeModel']);
 
 
@@ -28,6 +18,16 @@ app.controller('IndexCtrl', function ($scope, RecipeRestangular) {
 
   // -- Native navigation
   steroids.view.navigationBar.show("Recipes");
+
+  $scope.speed = function() {
+    navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+    function onSuccess(acceleration) {
+      alert('Acceleration X: ' + acceleration.x + '\n' +
+            'Acceleration Y: ' + acceleration.y + '\n' +
+            'Acceleration Z: ' + acceleration.z + '\n' +
+            'Timestamp: '      + acceleration.timestamp + '\n');
+    };
+  };
 
 });
 

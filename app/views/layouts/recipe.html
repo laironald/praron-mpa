@@ -20,8 +20,26 @@
   <script src="/models/models.js"></script>
 
   <script src="/controllers/<%= yield.controller %>.js"></script>
+  <script>
+    function onLoad() {
+      document.addEventListener("deviceready", onDeviceReady, false);
+    }
+    function onDeviceReady() {
+      document.addEventListener("online", onOnline, false);
+    }
+
+    function onOnline() {
+      alert('online')
+    }
+
+
+    function onError() {
+      alert('onError!');
+    };
+
+  </script>
 </head>
-<body data-ng-app="cooking">
+<body onload="onLoad()" data-ng-app="cooking">
 
   <%= yield.view %>
 
