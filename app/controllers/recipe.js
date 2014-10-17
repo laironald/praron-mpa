@@ -1,9 +1,19 @@
-var recipeApp = angular.module('cooking', ['RecipeModel']);
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+  document.addEventListener("online", onOnline, false);
+}
+
+function onOnline() {
+  alert('online')
+}
+
+
+var app = angular.module('cooking', ['RecipeModel']);
 
 
 // Index: http://localhost/views/recipe/index.html
 
-recipeApp.controller('IndexCtrl', function ($scope, RecipeRestangular) {
+app.controller('IndexCtrl', function ($scope, RecipeRestangular) {
 
   // Helper function for opening new webviews
   $scope.open = function(id) {
@@ -24,7 +34,7 @@ recipeApp.controller('IndexCtrl', function ($scope, RecipeRestangular) {
 
 // Show: http://localhost/views/recipe/show.html?id=<id>
 
-recipeApp.controller('ShowCtrl', function ($scope, $filter, RecipeRestangular) {
+app.controller('ShowCtrl', function ($scope, $filter, RecipeRestangular) {
 
   // Fetch all objects from the local JSON (see app/models/recipe.js)
   RecipeRestangular.all('recipe').getList().then( function(recipes) {
