@@ -1,4 +1,4 @@
-var recipeApp = angular.module('recipeApp', ['RecipeModel']);
+var recipeApp = angular.module('cooking', ['RecipeModel']);
 
 
 // Index: http://localhost/views/recipe/index.html
